@@ -10,10 +10,10 @@
       --text:#111827;
       --muted:#6b7280;
 
-      --brand:#e21f0c;      /* header/footer */
+      --brand:#f46f22;      /* NUEVO COLOR NARANJA */
       --bg:#f5ebdc;         /* fondo */
       --promo:#ffd366;      /* banner nav */
-      --heroArrow:#d62300;  /* flechas slider */
+      --heroArrow:#d35800;  /* flechas slider (tono más oscuro de naranja) */
       --coupon2:#ff5600;    /* gradiente cupon */
 
       --shadow: 0 14px 30px rgba(17,24,39,.10);
@@ -157,7 +157,7 @@
       line-height:1;
       min-width:92px;
       text-align:center;
-      box-shadow: 0 12px 22px rgba(226,31,12,.24);
+      box-shadow: 0 12px 22px rgba(244,111,34,.24); /* Actualizado a nuevo color */
     }
 
     /* ================= NAV + PROMO STRIP ================= */
@@ -237,9 +237,9 @@
       place-items:center;
     }
 
-    /* Fondo con degradado animado */
+    /* Fondo con degradado animado - actualizado a naranja */
     .nav-promo {
-      background: linear-gradient(90deg, #fd4f00, #e21f0c 60%, #c71708);
+      background: linear-gradient(90deg, #fd6f22, #f46f22 60%, #e0651e);
       background-size: 220% 220%;
       animation: bgShift 6s ease-in-out infinite;
     }
@@ -297,7 +297,7 @@
       place-items:center;
       z-index:3;
       border:1px solid rgba(255,255,255,.24);
-      box-shadow: 0 16px 28px rgba(214,35,0,.18);
+      box-shadow: 0 16px 28px rgba(211,88,0,.18); /* Actualizado */
     }
     .hero-arrow.left{left:10px}
     .hero-arrow.right{right:10px}
@@ -333,171 +333,7 @@
     .section-head h2{margin:0; font-size: clamp(18px, 2.2vw, 24px); font-weight:950;}
     .section-head p{margin:0; color:#374151; font-size:14px; max-width:70ch;}
 
-    /* ===== Restaurant hero (de Plantilla Productos) ===== */
-    .rest-hero{
-      background: rgba(255,255,255,.88);
-      border:1px solid rgba(0,0,0,.08);
-      border-radius: 22px;
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      margin-bottom: 20px;
-    }
-    .rest-hero-inner{
-      padding: 10px 12px;
-      display:flex;
-      gap:15px;
-      align-items:center;
-      flex-wrap:wrap;
-      min-height: 0 !important;
-    }
-    .rest-logo{
-      width: 195px;
-      height: 150px;
-      border-radius: 0;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow: visible;
-      flex:0 0 auto;
-      position: relative;
-      padding-right: 8px;
-      margin-right: 8px;
-    }
-    .rest-logo::after{
-      content:"";
-      position:absolute;
-      right: 0;
-      top: 50%;
-      height: 70%;
-      transform: translateY(-50%);
-      width: 1px;
-      background: rgba(107,114,128,.25);
-    }
-    .rest-logo img{width:195px; height:150px; object-fit:contain;}
-
-    .rest-copy{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-    .rest-copy p{
-      margin:1px 0 0;
-      color:#374151;
-      font-size: 13.5px;
-      line-height: 1.35;
-    }
-
-    /* ===== Ubicación + rating (PRO) ===== */
-    .rest-meta{
-      display:flex;
-      justify-content: flex-start;;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom: 6px;
-      text-align: left;
-    }
-    .rest-loc{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:950;
-      font-size:12px;
-      color:#9a3412;
-      background: rgba(249,115,22,.12);
-      border:1px solid rgba(249,115,22,.35);
-      box-shadow: 0 10px 18px rgba(17,24,39,.05);
-      width: fit-content;
-    }
-    .rest-loc .ico{display:grid; place-items:center;}
-    .rest-rating{
-      border:none;
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:999px;
-      padding:6px 10px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      cursor:pointer;
-      box-shadow: 0 10px 18px rgba(17,24,39,.05);
-    }
-    .rest-rating .stars{display:inline-flex; gap:2px; align-items:center;}
-    .rest-rating .stars svg{width:14px;height:14px; fill:#f59e0b; display:block;}
-    .rest-rating .rating-text{font-size:12px; color:#111827; font-weight:850; white-space:nowrap;}
-    .rest-rating .chev{ font-weight:950; color:#6b7280; margin-left:2px; }
-
-    .rest-hours{
-      position: relative;
-      padding-left: 15px;
-      padding-right: 10px;
-      margin:1px 10px 1px 10px;
-      min-width: 150px;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .rest-hours::before{
-      content:"";
-      position:absolute;
-      left: 0;
-      top: 50%;
-      height: 150%;
-      transform: translateY(-50%);
-      width: 1px;
-      background: rgba(107,114,128,.25);
-    }
-    .rest-hours-title{
-      font-weight: 950;
-      font-size: 13px;
-      color: #111827;
-      margin-bottom: 1px;
-    }
-    .rest-hours-time{
-      font-size: 13px;
-      color: #374151;
-      line-height: 1.35;
-    }
-
-    /* ===== Estado abierto/cerrado ===== */
-    .rest-status{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      width: fit-content;
-      padding:6px 10px;
-      border-radius: 999px;
-      font-weight: 950;
-      font-size: 12px;
-      letter-spacing: .2px;
-      margin-bottom: 6px;
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 10px 18px rgba(17,24,39,.06);
-    }
-    .rest-status::before{
-      content:"";
-      width:9px;height:9px;
-      border-radius:999px;
-      background: currentColor;
-      box-shadow: 0 0 0 4px rgba(0,0,0,.04);
-    }
-    .rest-status.open{
-      color:#065f46; /* verde */
-      background: rgba(16,185,129,.12);
-      border-color: rgba(16,185,129,.35);
-    }
-    .rest-status.closed{
-      color:#991b1b; /* rojo */
-      background: rgba(239,68,68,.12);
-      border-color: rgba(239,68,68,.35);
-    }
-
-    /* ===== Tabs (de Plantilla Productos) ===== */
+    /* ===== Tabs ===== */
     .tabs{ margin-top: 12px; position: static; }
     .tabs-inner{
       background: rgba(245,235,220,.92);
@@ -527,10 +363,10 @@
       background: var(--brand);
       color:#fff;
       border-color: var(--brand);
-      box-shadow: 0 14px 22px rgba(226,31,12,.20);
+      box-shadow: 0 14px 22px rgba(244,111,34,.20); /* Actualizado */
     }
 
-    /* ===== Grid productos (de Plantilla Productos) ===== */
+    /* ===== Grid productos ===== */
     .block{ margin-top: 14px; }
     .block-title{
       margin: 18px 0 10px;
@@ -630,7 +466,7 @@
       transition: transform .08s ease, background .15s ease, filter .15s ease;
       width: 170px;
     }
-    .p-add:hover{background: rgba(226,31,12,.06); filter:brightness(1.02);}
+    .p-add:hover{background: rgba(244,111,34,.06); filter:brightness(1.02);} /* Actualizado */
     .p-add:active{transform: translateY(1px);}
 
     /* ================= Banner cupones ================= */
@@ -641,7 +477,7 @@
       border:1px solid rgba(0,0,0,.08);
       box-shadow: var(--shadow2);
       background:
-        linear-gradient(90deg, rgba(120,62,0,.95), rgba(255,86,0,.90));
+        linear-gradient(90deg, rgba(120,62,0,.95), rgba(244,111,34,.90)); /* Actualizado */
     }
 
     /* ====== Barra cupones: textura restaurante (overlay con opacidad) ====== */
@@ -685,12 +521,12 @@
     .coupon-cta{
       border:2px solid rgba(255,255,255,.85);
       border-radius: 999px;
-      background: #fd4f00;
+      background: #fd6f22; /* Actualizado */
       color:#fff;
       font-weight:950;
       padding:10px 14px;
       cursor:pointer;
-      box-shadow: 0 16px 28px rgba(253,79,0,.28);
+      box-shadow: 0 16px 28px rgba(253,111,34,.28); /* Actualizado */
       white-space:nowrap;
       transition: transform .08s ease, filter .15s ease;
     }
@@ -735,7 +571,7 @@
       padding:10px 12px;
       cursor:pointer;
       width: fit-content;
-      box-shadow: 0 16px 28px rgba(226,31,12,.18);
+      box-shadow: 0 16px 28px rgba(244,111,34,.18); /* Actualizado */
       transition: transform .08s ease, filter .15s ease;
     }
     .promo-btn:hover{filter:brightness(1.05);} 
@@ -750,7 +586,7 @@
       background: #ff5600;
       z-index:9999;
       pointer-events:none;
-      box-shadow: 0 10px 18px rgba(255,86,0,.25);
+      box-shadow: 0 10px 18px rgba(244,111,34,.25); /* Actualizado */
       transform: translate(-50%, -50%);
     }
     .explosion{
@@ -767,7 +603,7 @@
       height:10px;
       border-radius:50%;
       opacity:0;
-      filter: drop-shadow(0 10px 18px rgba(226,31,12,.25));
+      filter: drop-shadow(0 10px 18px rgba(244,111,34,.25)); /* Actualizado */
       animation: particle-move 1.15s cubic-bezier(.15,.9,.2,1) forwards;
     }
     @keyframes particle-move{
@@ -863,8 +699,8 @@
     }
     .opt.is-checked{
       border-color: var(--brand);
-      background: rgba(226,31,12,.05);
-      box-shadow: 0 10px 18px rgba(226,31,12,.15);
+      background: rgba(244,111,34,.05); /* Actualizado */
+      box-shadow: 0 10px 18px rgba(244,111,34,.15); /* Actualizado */
     }
     .opt:active{ transform: scale(.98); }
 
@@ -888,7 +724,7 @@
       font-size: 15px;
       padding: 14px 16px;
       cursor:pointer;
-      box-shadow: 0 16px 30px rgba(226,31,12,.20);
+      box-shadow: 0 16px 30px rgba(244,111,34,.20); /* Actualizado */
     }
     .custom-footer{
       position: sticky;
@@ -1029,7 +865,7 @@
       font-weight:950;
       padding:10px 14px;
       cursor:pointer;
-      box-shadow: 0 16px 28px rgba(226,31,12,.16);
+      box-shadow: 0 16px 28px rgba(244,111,34,.16); /* Actualizado */
       white-space:nowrap;
       transition: transform .08s ease, filter .15s ease;
       width: 180px;
@@ -1037,7 +873,7 @@
     .sub-btn:hover{filter:brightness(1.05);}
     .sub-btn:active{transform: translateY(1px);}
 
-    /* ================= FOOTER (ROJO + BLANCO) ================= */
+    /* ================= FOOTER (NARANJA + BLANCO) ================= */
     footer{
       background: var(--brand);
       color:#fff;
@@ -1074,6 +910,7 @@
     }
 
     .contact-lines{font-size:13px;color: rgba(255,255,255,.92);display:flex;flex-direction:column;gap:8px;}
+
     .social{display:flex; gap:10px; align-items:center; margin-top:10px;}
     .social a{
       width:34px;height:34px;border-radius:999px;
@@ -1219,7 +1056,7 @@
         height: 36px;
         display: flex;
         place-items: center;
-        color: #e21f0c;
+        color: var(--brand);
         flex-shrink: 0;
       }
       
@@ -1253,7 +1090,7 @@
       
       .mobile-delivery-strip .chev {
         margin-left: 4px;
-        color: #e21f0c;
+        color: var(--brand);
         font-weight: 900;
         flex-shrink: 0;
       }
@@ -1284,56 +1121,6 @@
         min-height: 220px;
       }
       
-      /* RESTAURANT HERO - MÓVIL */
-      .rest-hero-inner{
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        flex-wrap: wrap;
-        padding: 12px 16px;
-        gap: 6px;
-        box-sizing: border-box;
-      }
-
-      .rest-logo,
-      .rest-copy,
-      .rest-meta,
-      .rest-hours{
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .rest-logo{ margin: 0 auto; }
-      .rest-logo img{ width: 195px; height: 150px; }
-
-      .rest-copy{ text-align: center; }
-      .rest-copy p{
-        text-align: justify;
-        font-size: 13.5px;
-        line-height: 1.45;
-        margin-top: 1px;
-      }
-
-      .rest-meta{
-        justify-content: center;
-        text-align: center;
-      }
-      .rest-rating{ justify-content: center; }
-
-      .rest-hours{
-        margin-top: 6px;
-        border-top: 1px solid rgba(107,114,128,.20);
-        padding-top: 6px;
-      }
-      .rest-hours::before{ display:none; }
-      .rest-hours-title{ text-align:center; }
-      .rest-hours-time{ text-align:center; }
-      #restStatus{ margin-left:auto; margin-right:auto; }
-
       /* GRID PRODUCTOS - MÓVIL */
       .grid{
         grid-template-columns: 1fr;
@@ -1474,7 +1261,7 @@
       .promo-2col{grid-template-columns: 1fr;}
       .promo-card{grid-template-columns: 1fr 1fr;}
       .footer-inner{grid-template-columns: 1fr 1fr;}
-      .footer-inner > div{border-right:none !important; border-bottom:1px solid #e21f0c; padding:16px 0;}
+      .footer-inner > div{border-right:none !important; border-bottom:1px solid var(--brand); padding:16px 0;}
       .footer-inner > div:last-child{border-bottom:none;}
       .nav-row{flex-wrap:wrap;}
       .nav-promo{min-height:42px; width:100%;}
@@ -1533,7 +1320,7 @@
       }
       
       .mobile-bottom-nav a.active {
-        color: #e21f0c;
+        color: var(--brand);
       }
       
       .mobile-bottom-nav .icon {
@@ -1586,7 +1373,7 @@
       }
     }
     
-    /* ===== Ondas (pulse / ripple) ===== */
+    /* ===== Ondas (pulse / ripple) - Actualizado a naranja ===== */
     .wa-float::before,
     .wa-float::after{
       content:"";
@@ -1599,7 +1386,7 @@
       height: 74px;
       border-radius: 999px;
     
-      border: 3px solid rgba(226,31,12,.55);
+      border: 3px solid rgba(244,111,34,.55); /* Actualizado */
       opacity: 0;
     
       pointer-events:none;
@@ -1611,7 +1398,7 @@
     .wa-float::after{
       width: 92px;
       height: 92px;
-      border-color: rgba(226,31,12,.35);
+      border-color: rgba(244,111,34,.35); /* Actualizado */
       animation-delay: .55s;
     }
     
@@ -1643,7 +1430,7 @@
       text-decoration:none;
       color:#fff;
       background: linear-gradient(180deg, var(--coupon2), var(--brand));
-      box-shadow: 0 16px 34px rgba(226,31,12,.40);
+      box-shadow: 0 16px 34px rgba(244,111,34,.40); /* Actualizado */
       border: 1px solid rgba(255,255,255,.22);
       transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
     }
@@ -1654,7 +1441,7 @@
     .see-more-btn:hover{
       transform: scale(1.06);
       filter: brightness(1.05);
-      box-shadow: 0 22px 44px rgba(226,31,12,.50);
+      box-shadow: 0 22px 44px rgba(244,111,34,.50); /* Actualizado */
     }
     .see-more-btn:hover span{ transform: translateX(4px); }
     .see-more-btn:active{ transform: scale(0.98); }
@@ -1676,7 +1463,7 @@
         <div class="search" role="search" aria-label="Buscar productos">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M21 21l-4.3-4.3m1.3-5.2a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"
-              stroke="#e21f0c" stroke-width="2" stroke-linecap="round"/>
+              stroke="#f46f22" stroke-width="2" stroke-linecap="round"/> <!-- Actualizado -->
           </svg>
           <label class="sr-only" for="q">Buscar</label>
           <input id="q" type="search" placeholder="Buscar pizzas..." />
@@ -1717,10 +1504,10 @@
         <button class="cart-pill" id="openCart" type="button" aria-label="Abrir carrito">
           <span aria-hidden="true" style="display:grid;place-items:center;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M6 6h15l-2 9H7L6 6Z" stroke="#e21f0c" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M6 6 5 3H2" stroke="#e21f0c" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="9" cy="20" r="1.6" fill="#e21f0c"/>
-              <circle cx="18" cy="20" r="1.6" fill="#e21f0c"/>
+              <path d="M6 6h15l-2 9H7L6 6Z" stroke="#f46f22" stroke-width="1.8" stroke-linejoin="round"/> <!-- Actualizado -->
+              <path d="M6 6 5 3H2" stroke="#f46f22" stroke-width="1.8" stroke-linecap="round"/> <!-- Actualizado -->
+              <circle cx="9" cy="20" r="1.6" fill="#f46f22"/> <!-- Actualizado -->
+              <circle cx="18" cy="20" r="1.6" fill="#f46f22"/> <!-- Actualizado -->
             </svg>
           </span>
           <span class="total-badge" id="cartTotalBadge">S/ 0.00</span>
@@ -1810,12 +1597,12 @@
 <div class="mobile-delivery-strip" id="mobileDelivery" aria-label="Comienza tu pedido">
   <div class="icon" aria-hidden="true">
     <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-      <path d="M5 16c1.2-2.9 3.4-4.6 6.6-5.2l2.1-.4" stroke="#e21f0c" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M13.7 10.4h2.7c1.1 0 2 .9 2 2v.8" stroke="#e21f0c" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M9.2 13.2l2.2 2.2h3.8" stroke="#e21f0c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="7.2" cy="16.8" r="2.0" stroke="#e21f0c" stroke-width="1.8"/>
-      <circle cx="18.2" cy="16.8" r="2.0" stroke="#e21f0c" stroke-width="1.8"/>
-      <path d="M16.2 12.2l-1.2-1.6" stroke="#e21f0c" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M5 16c1.2-2.9 3.4-4.6 6.6-5.2l2.1-.4" stroke="#f46f22" stroke-width="1.8" stroke-linecap="round"/> <!-- Actualizado -->
+      <path d="M13.7 10.4h2.7c1.1 0 2 .9 2 2v.8" stroke="#f46f22" stroke-width="1.8" stroke-linecap="round"/> <!-- Actualizado -->
+      <path d="M9.2 13.2l2.2 2.2h3.8" stroke="#f46f22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <!-- Actualizado -->
+      <circle cx="7.2" cy="16.8" r="2.0" stroke="#f46f22" stroke-width="1.8"/> <!-- Actualizado -->
+      <circle cx="18.2" cy="16.8" r="2.0" stroke="#f46f22" stroke-width="1.8"/> <!-- Actualizado -->
+      <path d="M16.2 12.2l-1.2-1.6" stroke="#f46f22" stroke-width="1.8" stroke-linecap="round"/> <!-- Actualizado -->
     </svg>
   </div>
   <div class="text">
@@ -1843,49 +1630,6 @@
 
 <main>
   <div class="container">
-
-    <!-- ===== ENCABEZADO PIZZERÍA LA MASSA ===== -->
-    <section class="rest-hero" aria-label="La Massa Pizzería">
-      <div class="rest-hero-inner">
-        <div class="rest-logo" aria-hidden="true">
-          <img src="img/logos/restaurantes/LaMassa.png" alt="La Massa Pizzería">
-        </div>
-
-        <div class="rest-copy" style="min-width:240px; flex:1;">
-          <div class="rest-meta" aria-label="Ubicación y reseñas">
-            <div class="rest-loc" title="Ubicación">
-              <span class="ico" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 21s7-4.6 7-11a7 7 0 10-14 0c0 6.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" />
-                  <path d="M12 10.5a2.3 2.3 0 100-4.6 2.3 2.3 0 000 4.6Z" stroke="currentColor" stroke-width="1.8" />
-                </svg>
-              </span>
-              <span class="txt">Pachacamac</span>
-            </div>
-
-            <button class="rest-rating" id="openReviews" type="button" aria-label="Ver opiniones">
-              <span class="stars" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 17.3 6.2 20.6l1.1-6.5L2.6 9.6l6.6-1L12 2.7l2.8 5.9 6.6 1-4.7 4.5 1.1 6.5z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 17.3 6.2 20.6l1.1-6.5L2.6 9.6l6.6-1L12 2.7l2.8 5.9 6.6 1-4.7 4.5 1.1 6.5z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 17.3 6.2 20.6l1.1-6.5L2.6 9.6l6.6-1L12 2.7l2.8 5.9 6.6 1-4.7 4.5 1.1 6.5z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 17.3 6.2 20.6l1.1-6.5L2.6 9.6l6.6-1L12 2.7l2.8 5.9 6.6 1-4.7 4.5 1.1 6.5z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 17.3 6.2 20.6l1.1-6.5L2.6 9.6l6.6-1L12 2.7l2.8 5.9 6.6 1-4.7 4.5 1.1 6.5z"/></svg>
-              </span>
-              <span class="rating-text"><b>4.8</b> (96 opiniones)</span>
-              <span class="chev" aria-hidden="true">›</span>
-            </button>
-          </div>
-
-          <p><b>Auténtica pizza italiana</b>: masa artesanal, ingredientes frescos y horno de leña. Desde las clásicas Margherita hasta especialidades gourmet. Perfecto para compartir con amigos y familia.</p>
-        </div>
-
-        <div class="rest-hours" aria-label="Horario de atención">
-          <div class="rest-status" id="restStatus" aria-live="polite">—</div>
-          <div class="rest-hours-title">Horario de atención</div>
-          <div class="rest-hours-time">De Martes a Domingo de 12:00 p.m. a 11:00 p.m.</div>
-        </div>
-      </div>
-    </section>
 
     <!-- ===== TABS SECCIONES PIZZERÍA ===== -->
     <section class="tabs" aria-label="Secciones">
@@ -2046,6 +1790,8 @@
         <div class="contact-lines">
           <div><b>Whatsapp:</b> +51925915905</div>
           <div><b>Correo:</b> contacto@lamassa.com</div>
+          <div><b>Horario:</b> De Martes a Domingo de 3:00 p.m. a 11:00 p.m.</div> <!-- AGREGADO -->
+          <div><b>Ubicación:</b> Pachacamac</div> <!-- AGREGADO -->
         </div>
 
         <div class="social" aria-label="Redes">
@@ -2184,44 +1930,6 @@
   const escapeHtml = (str) => String(str).replace(/[&<>"']/g, m => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
   }[m]));
-
-  // ================== HORARIO ==================
-  const STORE_SCHEDULE = {
-    tz: "America/Lima",
-    daily: { open: "12:00", close: "23:00" }
-  };
-
-  function nowInTZ(tz){
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone: tz,
-      year:"numeric", month:"2-digit", day:"2-digit",
-      hour:"2-digit", minute:"2-digit", second:"2-digit",
-      hour12:false
-    }).formatToParts(new Date()).reduce((acc,p)=>{acc[p.type]=p.value; return acc;}, {});
-    return new Date(`${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}`);
-  }
-
-  function hhmmToMinutes(hhmm){
-    const [h,m] = String(hhmm).split(":").map(Number);
-    return (h*60) + (m||0);
-  }
-
-  function isStoreOpen(){
-    const d = nowInTZ(STORE_SCHEDULE.tz);
-    const mins = d.getHours()*60 + d.getMinutes();
-    const openM = hhmmToMinutes(STORE_SCHEDULE.daily.open);
-    const closeM = hhmmToMinutes(STORE_SCHEDULE.daily.close);
-    return mins >= openM && mins < closeM;
-  }
-
-  function applyStoreStatusUI(){
-    const badge = document.getElementById("restStatus");
-    if(!badge) return;
-    const open = isStoreOpen();
-    badge.classList.toggle("open", open);
-    badge.classList.toggle("closed", !open);
-    badge.textContent = open ? "Abierto" : "Cerrado";
-  }
 
   // ================== OPCIONES PIZZERÍA ==================
   const OPT = {
@@ -2951,8 +2659,6 @@
   buildTabs();
   renderMenu();
   renderCartBadge();
-  applyStoreStatusUI();
-  setInterval(applyStoreStatusUI, 60 * 1000);
   $("#year").textContent = String(new Date().getFullYear());
 </script>
 <!-- WhatsApp flotante -->
@@ -2963,7 +2669,7 @@
   rel="noopener"
   aria-label="Chatear por WhatsApp"
 >
-  <img class="wa-icon" src="img/logos/LogoWhatsappRojo.png" alt="WhatsApp">
+  <img class="wa-icon" src="img/logos/LogoWhatsappNaranja.png" alt="WhatsApp">
 </a>
 
 </body>
