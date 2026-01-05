@@ -2227,27 +2227,29 @@
 
   function renderMenu(){
     const root = $("#menuRoot");
+    if (!root) return; // Verifica que el elemento exista
+    
     const q = ($("#q").value || "").trim().toLowerCase();
-
+  
     if (activeSection !== "all" && !SECTIONS.some(s => s.id === activeSection)) {
       activeSection = "all";
     }
-
+  
     const secName =
       activeSection === "all"
         ? "Todos los productos"
         : (SECTIONS.find(s => s.id === activeSection)?.name || "Carta");
-
+  
     let list = Array.isArray(menu) ? menu.slice() : [];
-
+  
     if (activeSection !== "all") {
       list = list.filter(p => p.section === activeSection);
     }
-
+  
     if (q) {
       list = list.filter(p => (p.name + " " + (p.desc || "")).toLowerCase().includes(q));
     }
-
+  
     root.innerHTML = `
       <div class="block-title">
         <h3>${escapeHtml(secName)}</h3>
@@ -2263,7 +2265,8 @@
         }
       </div>
     `;
-
+  
+    // Re-enlazar eventos a los botones "Agregar"
     root.querySelectorAll("[data-open-custom]").forEach(btn => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-open-custom");
@@ -2273,9 +2276,6 @@
       });
     });
   }
-
-  $("#q").addEventListener("input", renderMenu);
-
   // ================== RESEÑAS ==================
   const REVIEWS = [
     { name:"Carlos M.",  rating:5, date:"Hace 3 días", text:"La mejor pizza de Pachacamac. La masa es perfecta y los ingredientes frescos." },
