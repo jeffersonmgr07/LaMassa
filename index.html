@@ -2204,8 +2204,6 @@
       activeSection = "all";
       buildTabs();
       renderMenu();
-      const menuRoot = $("#menuRoot");
-      window.scrollTo({ top: menuRoot.getBoundingClientRect().top + window.scrollY - 120, behavior:"smooth" });
     });
     root.appendChild(allBtn);
 
@@ -2218,8 +2216,6 @@
         activeSection = s.id;
         buildTabs();
         renderMenu();
-        const menuRoot = $("#menuRoot");
-        window.scrollTo({ top: menuRoot.getBoundingClientRect().top + window.scrollY - 120, behavior:"smooth" });
       });
       root.appendChild(b);
     });
@@ -2227,9 +2223,12 @@
 
   function renderMenu(){
     const root = $("#menuRoot");
-    if (!root) return; // Verifica que el elemento exista
+    if (!root) {
+      console.error("No se encontró #menuRoot");
+      return;
+    }
     
-    const q = ($("#q").value || "").trim().toLowerCase();
+    const q = ($("#q") ? $("#q").value || "" : "").trim().toLowerCase();
   
     if (activeSection !== "all" && !SECTIONS.some(s => s.id === activeSection)) {
       activeSection = "all";
@@ -2276,6 +2275,7 @@
       });
     });
   }
+  
   // ================== RESEÑAS ==================
   const REVIEWS = [
     { name:"Carlos M.",  rating:5, date:"Hace 3 días", text:"La mejor pizza de Pachacamac. La masa es perfecta y los ingredientes frescos." },
@@ -2566,10 +2566,6 @@
     $("#cartModal").setAttribute("aria-hidden","true");
   }
   $("#openCart").addEventListener("click", openCart);
-  $("#openReviews").addEventListener("click", openReviews);
-  $("#closeReviews").addEventListener("click", closeReviews);
-  $("#reviewsModal").addEventListener("click", (e)=>{ if(e.target.id==="reviewsModal") closeReviews(); });
-
   $("#closeCart").addEventListener("click", closeCart);
   $("#cartModal").addEventListener("click", (e)=>{ if(e.target.id==="cartModal") closeCart(); });
 
@@ -2652,6 +2648,14 @@
       }
     });
   });
+
+  // ================== BUSCADOR ==================
+  const searchInput = $("#q");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      renderMenu();
+    });
+  }
 
   // ================== INIT ==================
   buildDots(); 
