@@ -1567,26 +1567,6 @@
   </div>
 </div>
 
-<div id="cartModal" aria-hidden="true">
-  <div class="cart-sheet">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:14px; border-bottom:1px solid rgba(0,0,0,.08); background: linear-gradient(180deg, #fff, #fff6ef);">
-      <strong>🛒 Tu carrito</strong>
-      <button id="closeCart" type="button"
-        style="border:none; background:#f3f4f6; border:1px solid rgba(0,0,0,.10); border-radius:14px; padding:8px 10px; cursor:pointer; font-weight:950;">✕</button>
-    </div>
-    <div id="cartItems" style="padding:14px; display:flex; flex-direction:column; gap:10px; max-height:55vh; overflow:auto;"></div>
-    <div style="padding:14px; border-top:1px solid rgba(0,0,0,.08); display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-      <strong>Total: <span id="cartTotalText">S/ 0.00</span></strong>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button id="clearCart" type="button"
-          style="border-radius:999px; border:1px solid rgba(0,0,0,.10); background:#fff; padding:10px 12px; font-weight:950; cursor:pointer;">Vaciar</button>
-        <button id="checkout" type="button"
-          style="border-radius:999px; border:none; background:#111; color:#fff; padding:10px 12px; font-weight:950; cursor:pointer;">Finalizar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -1594,7 +1574,7 @@
         <img class="footer-logo" src="img/logos/Logo2.png" alt="Logo La Massa">
         <div class="f-title">Conéctate con nosotros</div>
         <div class="contact-lines">
-          <div><b>Whatsapp:</b> +51925915905</div>
+          <div><b>Whatsapp:</b> +51926620848</div>
           <div><b>Correo:</b> contacto@lamassa.com</div>
           <div><b>Horario:</b> De Martes a Domingo de 3:00 p.m. a 11:00 p.m.</div>
           <div><b>Ubicación:</b> Pachacamac</div>
@@ -1726,7 +1706,7 @@
       required:true,
       choices:[
         { id:"media", label:"Media Pizza", add:0.00 },
-        { id:"familiar", label:"Familiar", add:0.00 }
+        { id:"familiar", label:"Familiar", add:22.00 }
       ],
       defaultId:"media"
     },
@@ -1803,7 +1783,7 @@
   // ================== PRODUCTOS SIMPLIFICADOS ==================
   const menu = [
     // PIZZAS CONTUNDENTES
-    { id:"pizza_4_sabores", section:"contundentes", name:"Pizza 4 Sabores", desc:"Las más pedidas: Americana, Peperoni, Hawaiana y Caracas", price:45.00, groups:[OPT.tamanioPizza, OPT.extrasPizza, OPT.bebidas, OPT.panAjo] },
+    { id:"pizza_4_sabores", section:"contundentes", name:"Pizza 4 Sabores", desc:"Las más pedidas: Americana, Peperoni, Hawaiana y Caracas", price:45.00, groups:[OPT.extrasPizza, OPT.bebidas, OPT.panAjo] },
     { id:"sicilina", section:"contundentes", name:"Sicilina", desc:"Chorizo español, tocino ahumado, carne de res, cebolla blanca, aceituna y pimiento.", price_media:22.00, price_familiar:43.00, groups:[OPT.tamanioPizza, OPT.extrasPizza, OPT.bebidas, OPT.panAjo] },
     { id:"naciones_unidas", section:"contundentes", name:"Naciones Unidas 2", desc:"Salame, tocino, jamón, chorizo (picado), cebolla, champiñones, pimiento y aceituna.", price_media:23.00, price_familiar:45.00, groups:[OPT.tamanioPizza, OPT.extrasPizza, OPT.bebidas, OPT.panAjo] },
     { id:"carioca", section:"contundentes", name:"Carioca", desc:"Mozzarella, tocino, jamón (picado), carne de res, chorizo, cebolla blanca, aceituna y pimiento.", price_media:23.00, price_familiar:45.00, groups:[OPT.tamanioPizza, OPT.extrasPizza, OPT.bebidas, OPT.panAjo] },
@@ -1849,9 +1829,31 @@
     { id:"coca_600", section:"bebidas", name:"Coca Cola 600 ml", desc:"", price:4.50, groups:[] },
     { id:"coca_15", section:"bebidas", name:"Coca Cola 1.5L", desc:"", price:9.50, groups:[] },
 
-    // PASTAS
+    // ☕ CALIENTITOS
+    { id:"infusiones", section:"calientes", name:"Infusiones (Té, anís o manzanilla)", desc:"", price:2.50, groups:[] },
+    { id:"cafe_pasado", section:"calientes", name:"Café Pasado", desc:"", price:4.00, groups:[] },
+    { id:"cappuchino", section:"calientes", name:"Cappuchino", desc:"", price:7.00, groups:[] },
+    { id:"latte", section:"calientes", name:"Latte", desc:"", price:6.00, groups:[] },
+
+    // 🍷 VINOS, CERVEZAS Y TRAGOS
+    { id:"vino_queirolo", section:"alcoholicas", name:"Vino Queirolo Rosé", desc:"Rosa, Borgoña o Magdalena", price:28.00, groups:[] },
+    { id:"cerveza_cusquena_trigo", section:"alcoholicas", name:"Cerveza Cusqueña Trigo", desc:"", price:8.00, groups:[] },
+    { id:"cerveza_tres_cruces", section:"alcoholicas", name:"Cerveza Tres Cruces", desc:"", price:6.00, groups:[] },
+    { id:"cerveza_corona", section:"alcoholicas", name:"Cerveza Corona", desc:"", price:8.00, groups:[] },
+    { id:"cerveza_pilsen", section:"alcoholicas", name:"Cerveza Pilsen", desc:"", price:7.00, groups:[] },
+    { id:"chilcano_clasico", section:"alcoholicas", name:"Chilcano Clásico", desc:"", price:15.00, groups:[] },
+    { id:"chilcano_maracuya", section:"alcoholicas", name:"Chilcano de Maracuyá", desc:"", price:15.00, groups:[] },
+    { id:"cuba_libre", section:"alcoholicas", name:"Cuba Libre", desc:"", price:15.00, groups:[] },
+
+    // 🍝 PASTAS
     { id:"lasagna", section:"pastas", name:"Lasaña", desc:"Incluye pan al ajo", price:25.00, groups:[] },
-    { id:"fetuccini_alfredo", section:"pastas", name:"Fetuccini Alfredo", desc:"Incluye pan al ajo", price:21.00, groups:[] }
+    { id:"avioles_alfredo", section:"pastas", name:"Avioles c. Alfredo", desc:"Incluye pan al ajo", price:22.00, groups:[] },
+    { id:"avioles_bolonesa", section:"pastas", name:"Avioles c. Boloñesa", desc:"Incluye pan al ajo", price:22.00, groups:[] },
+    { id:"fetuccini_alfredo", section:"pastas", name:"Fetuccini Alfredo", desc:"Incluye pan al ajo", price:21.00, groups:[] },
+    { id:"fetuccini_bolonesa", section:"pastas", name:"Fetuccini Boloñesa", desc:"Incluye pan al ajo", price:21.00, groups:[] },
+    { id:"lasagna_jamon_alfredo", section:"pastas", name:"Lasaña Jamón Alfredo", desc:"Incluye pan al ajo", price:23.00, groups:[] },
+    { id:"lasagna_primavera", section:"pastas", name:"Lasaña Primavera", desc:"Incluye pan al ajo", price:23.00, groups:[] },
+    { id:"canelones_alfredo", section:"pastas", name:"Canelones a lo Alfredo", desc:"Incluye pan al ajo", price:23.00, groups:[] }
   ];
 
   // ================== CARRITO ==================
@@ -1889,20 +1891,218 @@
     if(totalText) totalText.textContent = money(cartTotal());
   }
 
+  // ================== CHECKOUT Y WHATSAPP ==================
+  function showCheckoutModal() {
+    const modalHTML = `
+      <div id="checkoutModal" style="
+        display:flex; position:fixed; inset:0; background:rgba(17,24,39,.75); 
+        z-index:9999; align-items:center; justify-content:center; padding:18px;
+      ">
+        <div style="
+          max-width:500px; width:100%; background:#fff; border-radius:22px;
+          overflow:hidden; box-shadow: 0 28px 80px rgba(0,0,0,.35);
+        ">
+          <div style="
+            display:flex; align-items:center; justify-content:space-between;
+            padding:18px; border-bottom:1px solid rgba(0,0,0,.08);
+            background: linear-gradient(180deg, #fff, #fff6ef);
+          ">
+            <h3 style="margin:0; font-weight:950;">Completar Pedido</h3>
+            <button id="closeCheckout" style="
+              border:none; background:#f3f4f6; border:1px solid rgba(0,0,0,.10);
+              border-radius:14px; padding:8px 10px; cursor:pointer; font-weight:950;
+            ">✕</button>
+          </div>
+          <div style="padding:18px; max-height:70vh; overflow-y:auto;">
+            <form id="checkoutForm">
+              <div style="margin-bottom:16px;">
+                <label style="display:block; margin-bottom:6px; font-weight:950;">Nombre completo *</label>
+                <input type="text" required style="
+                  width:100%; padding:12px 14px; border-radius:12px;
+                  border:1px solid rgba(0,0,0,.12); font-size:14px;
+                " placeholder="Ej: Juan Pérez">
+              </div>
+              
+              <div style="margin-bottom:16px;">
+                <label style="display:block; margin-bottom:6px; font-weight:950;">Tipo de pedido *</label>
+                <select id="orderType" required style="
+                  width:100%; padding:12px 14px; border-radius:12px;
+                  border:1px solid rgba(0,0,0,.12); font-size:14px;
+                  background:#fff;
+                ">
+                  <option value="">Seleccionar...</option>
+                  <option value="delivery">🚚 Delivery</option>
+                  <option value="recojo">🛒 Recojo en tienda</option>
+                  <option value="reserva">🍽️ Reserva de mesa</option>
+                </select>
+              </div>
+              
+              <div id="deliveryFields" style="display:none; margin-bottom:16px;">
+                <label style="display:block; margin-bottom:6px; font-weight:950;">Dirección completa *</label>
+                <textarea required style="
+                  width:100%; padding:12px 14px; border-radius:12px;
+                  border:1px solid rgba(0,0,0,.12); font-size:14px;
+                  min-height:80px; resize:vertical;
+                " placeholder="Calle, número, distrito, referencia..."></textarea>
+                
+                <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+                  <button type="button" id="getLocation" style="
+                    padding:10px 14px; border-radius:12px; background:#f3f4f6;
+                    border:1px solid rgba(0,0,0,.12); cursor:pointer; font-weight:950;
+                  ">📍 Obtener mi ubicación</button>
+                  <div id="locationStatus" style="font-size:12px; color:#6b7280;"></div>
+                </div>
+              </div>
+              
+              <div id="timeFields" style="display:none; margin-bottom:16px;">
+                <label style="display:block; margin-bottom:6px; font-weight:950;">
+                  <span id="timeLabel">Hora de recojo</span> *
+                </label>
+                <input type="time" required style="
+                  width:100%; padding:12px 14px; border-radius:12px;
+                  border:1px solid rgba(0,0,0,.12); font-size:14px;
+                ">
+              </div>
+              
+              <div style="margin-top:24px; background:#f9fafb; padding:14px; border-radius:12px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                  <strong>Total del pedido:</strong>
+                  <strong>${money(cartTotal())}</strong>
+                </div>
+                <div style="font-size:12px; color:#6b7280;">
+                  Al continuar, se enviará el pedido por WhatsApp para confirmación.
+                </div>
+              </div>
+              
+              <div style="margin-top:24px; display:flex; gap:10px;">
+                <button type="button" id="cancelCheckout" style="
+                  flex:1; padding:14px; border-radius:12px; background:#f3f4f6;
+                  border:1px solid rgba(0,0,0,.12); font-weight:950; cursor:pointer;
+                ">Cancelar</button>
+                <button type="submit" style="
+                  flex:2; padding:14px; border-radius:12px; background: var(--brand);
+                  color:#fff; border:none; font-weight:950; cursor:pointer;
+                  box-shadow: 0 16px 28px rgba(244,111,34,.18);
+                ">Enviar pedido por WhatsApp</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Event listeners para el modal
+    $("#closeCheckout").addEventListener("click", () => {
+      $("#checkoutModal").remove();
+    });
+    
+    $("#cancelCheckout").addEventListener("click", () => {
+      $("#checkoutModal").remove();
+    });
+    
+    // Mostrar/ocultar campos según tipo de pedido
+    $("#orderType").addEventListener("change", function() {
+      const type = this.value;
+      $("#deliveryFields").style.display = type === "delivery" ? "block" : "none";
+      $("#timeFields").style.display = (type === "recojo" || type === "reserva") ? "block" : "none";
+      
+      if (type === "recojo") {
+        $("#timeLabel").textContent = "Hora de recojo";
+      } else if (type === "reserva") {
+        $("#timeLabel").textContent = "Hora de llegada";
+      }
+    });
+    
+    // Obtener ubicación
+    $("#getLocation").addEventListener("click", function() {
+      const status = $("#locationStatus");
+      if (!navigator.geolocation) {
+        status.textContent = "Geolocalización no soportada";
+        return;
+      }
+      
+      status.textContent = "Obteniendo ubicación...";
+      
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const addressField = $("#deliveryFields textarea");
+          addressField.value = `📍 Ubicación automática: ${lat.toFixed(6)}, ${lng.toFixed(6)}\n`;
+          status.textContent = "Ubicación obtenida ✓";
+          status.style.color = "#10b981";
+        },
+        (error) => {
+          status.textContent = "No se pudo obtener la ubicación";
+          status.style.color = "#ef4444";
+        }
+      );
+    });
+    
+    // Enviar pedido por WhatsApp
+    $("#checkoutForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Obtener datos del formulario
+      const formData = new FormData(this);
+      const orderType = $("#orderType").value;
+      
+      // Construir mensaje de WhatsApp
+      let message = `*NUEVO PEDIDO - LA MASSA PIZZERÍA*\n\n`;
+      message += `*Cliente:* ${formData.get("nombre") || "No especificado"}\n`;
+      message += `*Tipo:* ${orderType === "delivery" ? "Delivery" : orderType === "recojo" ? "Recojo" : "Reserva"}\n`;
+      
+      if (orderType === "delivery") {
+        message += `*Dirección:* ${formData.get("direccion") || "No especificada"}\n`;
+      } else {
+        message += `*Hora:* ${formData.get("hora") || "No especificada"}\n`;
+      }
+      
+      message += `\n*DETALLE DEL PEDIDO:*\n`;
+      Object.values(cart).forEach(item => {
+        message += `• ${item.name} x${item.qty} = ${money(item.price * item.qty)}\n`;
+      });
+      
+      message += `\n*TOTAL:* ${money(cartTotal())}\n`;
+      message += `\n*Nota:* Pedido generado desde la web\n`;
+      
+      // Codificar mensaje para URL
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/51926620848?text=${encodedMessage}`;
+      
+      // Limpiar carrito
+      cart = {};
+      saveCart();
+      renderCartBadge();
+      
+      // Cerrar modal y abrir WhatsApp
+      $("#checkoutModal").remove();
+      window.open(whatsappURL, "_blank");
+      
+      // Mostrar confirmación
+      alert("¡Pedido enviado! Se abrirá WhatsApp para confirmación.");
+    });
+  }
+
   // ================== RENDERIZAR MENÚ ==================
   let activeSection = "all";
 
   function productCardHTML(p) {
     let priceText = "";
     
-    if (p.section === "contundentes" || p.section === "clasicas" || 
-        p.section === "vegetales" || p.section === "dulces") {
-      if (p.id === "pizza_4_sabores") {
-        priceText = `Familiar: ${money(p.price)}`;
-      } else {
-        priceText = `Media: ${money(p.price_media)} • Familiar: ${money(p.price_familiar)}`;
-      }
-    } else {
+    // Caso especial: Pizza 4 Sabores solo muestra precio familiar
+    if (p.id === "pizza_4_sabores") {
+      priceText = `${money(p.price)}`;
+    }
+    // Pizzas con dos tamaños
+    else if (p.section === "contundentes" || p.section === "clasicas" || 
+            p.section === "vegetales" || p.section === "dulces") {
+      priceText = `Desde: ${money(p.price_media)}`;
+    }
+    // Resto de productos
+    else {
       priceText = `${money(p.price)}`;
     }
 
@@ -2215,6 +2415,103 @@
     $("#customBreakdown").textContent = breakdown.slice(0, 3).join(" • ") + (breakdown.length > 3 ? " • ..." : "");
   }
 
+  // ================== FUNCIÓN DEL CARRITO ==================
+  function openCart() {
+    if (Object.keys(cart).length === 0) {
+      alert("🛒 Tu carrito está vacío");
+      return;
+    }
+    
+    const modalHTML = `
+      <div id="cartModal" style="
+        display:flex; position:fixed; inset:0; background:rgba(17,24,39,.55); 
+        z-index:9999; align-items:center; justify-content:center; padding:18px;
+      ">
+        <div style="
+          max-width:560px; width:100%; background:#fff; border-radius:22px;
+          overflow:hidden; box-shadow: 0 28px 80px rgba(0,0,0,.35);
+        ">
+          <div style="
+            display:flex; align-items:center; justify-content:space-between;
+            padding:18px; border-bottom:1px solid rgba(0,0,0,.08);
+            background: linear-gradient(180deg, #fff, #fff6ef);
+          ">
+            <strong style="font-size:18px;">🛒 Tu Carrito</strong>
+            <button id="closeCartBtn" style="
+              border:none; background:#f3f4f6; border:1px solid rgba(0,0,0,.10);
+              border-radius:14px; padding:8px 10px; cursor:pointer; font-weight:950;
+            ">✕</button>
+          </div>
+          <div id="cartItemsList" style="
+            padding:18px; max-height:50vh; overflow-y:auto;
+          "></div>
+          <div style="
+            padding:18px; border-top:1px solid rgba(0,0,0,.08);
+            display:flex; align-items:center; justify-content:space-between;
+            gap:10px; flex-wrap:wrap; background:#f9fafb;
+          ">
+            <div>
+              <div style="font-size:14px; color:#6b7280;">Total a pagar</div>
+              <div style="font-weight:950; font-size:24px;">${money(cartTotal())}</div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button id="clearCartBtn" style="
+                border-radius:999px; border:1px solid rgba(0,0,0,.10);
+                background:#fff; padding:12px 18px; font-weight:950; cursor:pointer;
+              ">Vaciar</button>
+              <button id="checkoutBtn" style="
+                border-radius:999px; border:none; background: var(--brand);
+                color:#fff; padding:12px 24px; font-weight:950; cursor:pointer;
+                box-shadow: 0 16px 28px rgba(244,111,34,.18);
+              ">Finalizar Pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    const itemsList = $("#cartItemsList");
+    itemsList.innerHTML = Object.values(cart).map(item => `
+      <div style="
+        display:flex; justify-content:space-between; align-items:flex-start;
+        padding:12px; background:#fff; border-radius:12px; border:1px solid rgba(0,0,0,.06);
+        margin-bottom:8px;
+      ">
+        <div style="flex:1;">
+          <div style="font-weight:950; margin-bottom:4px;">${escapeHtml(item.name)}</div>
+          <div style="font-size:12px; color:#6b7280;">${money(item.price)} c/u</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="font-weight:950;">x${item.qty}</div>
+          <div style="font-weight:950; min-width:80px; text-align:right;">
+            ${money(item.price * item.qty)}
+          </div>
+        </div>
+      </div>
+    `).join('');
+    
+    $("#closeCartBtn").addEventListener("click", () => {
+      $("#cartModal").remove();
+    });
+    
+    $("#clearCartBtn").addEventListener("click", () => {
+      if (confirm("¿Vaciar todo el carrito?")) {
+        cart = {};
+        saveCart();
+        renderCartBadge();
+        $("#cartModal").remove();
+        alert("Carrito vaciado");
+      }
+    });
+    
+    $("#checkoutBtn").addEventListener("click", () => {
+      $("#cartModal").remove();
+      showCheckoutModal();
+    });
+  }
+
   // ================== EVENT LISTENERS ==================
   document.addEventListener("DOMContentLoaded", function() {
     // Inicializar carrito
@@ -2275,7 +2572,6 @@
     
     // Carrito
     if($("#openCart")) $("#openCart").addEventListener("click", openCart);
-    if($("#closeCart")) $("#closeCart").addEventListener("click", closeCart);
     
     // Franja móvil
     const mobileDelivery = $("#mobileDelivery");
@@ -2306,28 +2602,9 @@
       });
     });
   });
-
-  // Funciones del carrito modal (simplificadas)
-  function openCart() {
-    alert("Carrito - Función en desarrollo");
-  }
-  
-  function closeCart() {
-    // Implementación básica
-  }
-
-  // Función para mostrar alerta de WhatsApp
-  const waFloat = $(".wa-float");
-  if(waFloat) {
-    waFloat.addEventListener("click", function(e) {
-      e.preventDefault();
-      alert("Serás redirigido a WhatsApp para realizar tu pedido");
-      window.open(this.href, "_blank");
-    });
-  }
 </script>
 
-<a class="wa-float" href="https://wa.me/51925915905?text=Hola%20La%20Massa%2C%20quisiera%20hacer%20un%20pedido%20de%20pizza." target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+<a class="wa-float" href="https://wa.me/51926620848?text=Hola%20La%20Massa%2C%20quisiera%20hacer%20un%20pedido%20de%20pizza." target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
   <img class="wa-icon" src="img/logos/LogoWhatsappNaranja.png" alt="WhatsApp">
 </a>
 
