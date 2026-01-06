@@ -1917,15 +1917,23 @@
             <form id="checkoutForm">
               <div style="margin-bottom:16px;">
                 <label style="display:block; margin-bottom:6px; font-weight:950;">Nombre completo *</label>
-                <input type="text" required style="
+                <input type="text" name="nombre" required style="
                   width:100%; padding:12px 14px; border-radius:12px;
                   border:1px solid rgba(0,0,0,.12); font-size:14px;
                 " placeholder="Ej: Juan Pérez">
               </div>
               
               <div style="margin-bottom:16px;">
+                <label style="display:block; margin-bottom:6px; font-weight:950;">Teléfono *</label>
+                <input type="tel" name="telefono" required style="
+                  width:100%; padding:12px 14px; border-radius:12px;
+                  border:1px solid rgba(0,0,0,.12); font-size:14px;
+                " placeholder="Ej: 999888777">
+              </div>
+              
+              <div style="margin-bottom:16px;">
                 <label style="display:block; margin-bottom:6px; font-weight:950;">Tipo de pedido *</label>
-                <select id="orderType" required style="
+                <select id="orderType" name="tipo_pedido" required style="
                   width:100%; padding:12px 14px; border-radius:12px;
                   border:1px solid rgba(0,0,0,.12); font-size:14px;
                   background:#fff;
@@ -1939,7 +1947,7 @@
               
               <div id="deliveryFields" style="display:none; margin-bottom:16px;">
                 <label style="display:block; margin-bottom:6px; font-weight:950;">Dirección completa *</label>
-                <textarea required style="
+                <textarea name="direccion" style="
                   width:100%; padding:12px 14px; border-radius:12px;
                   border:1px solid rgba(0,0,0,.12); font-size:14px;
                   min-height:80px; resize:vertical;
@@ -1958,7 +1966,7 @@
                 <label style="display:block; margin-bottom:6px; font-weight:950;">
                   <span id="timeLabel">Hora de recojo</span> *
                 </label>
-                <input type="time" required style="
+                <input type="time" name="hora" style="
                   width:100%; padding:12px 14px; border-radius:12px;
                   border:1px solid rgba(0,0,0,.12); font-size:14px;
                 ">
@@ -2005,13 +2013,30 @@
     // Mostrar/ocultar campos según tipo de pedido
     $("#orderType").addEventListener("change", function() {
       const type = this.value;
-      $("#deliveryFields").style.display = type === "delivery" ? "block" : "none";
-      $("#timeFields").style.display = (type === "recojo" || type === "reserva") ? "block" : "none";
+      const deliveryFields = $("#deliveryFields");
+      const timeFields = $("#timeFields");
       
-      if (type === "recojo") {
+      // Obtener inputs
+      const direccionInput = deliveryFields.querySelector("textarea");
+      const horaInput = timeFields.querySelector("input[type='time']");
+      
+      if (type === "delivery") {
+        deliveryFields.style.display = "block";
+        timeFields.style.display = "none";
+        direccionInput.required = true;
+        horaInput.required = false;
         $("#timeLabel").textContent = "Hora de recojo";
-      } else if (type === "reserva") {
-        $("#timeLabel").textContent = "Hora de llegada";
+      } else if (type === "recojo" || type === "reserva") {
+        deliveryFields.style.display = "none";
+        timeFields.style.display = "block";
+        direccionInput.required = false;
+        horaInput.required = true;
+        $("#timeLabel").textContent = type === "recojo" ? "Hora de recojo" : "Hora de llegada";
+      } else {
+        deliveryFields.style.display = "none";
+        timeFields.style.display = "none";
+        direccionInput.required = false;
+        horaInput.required = false;
       }
     });
     
@@ -2047,42 +2072,72 @@
       
       // Obtener datos del formulario
       const formData = new FormData(this);
-      const orderType = $("#orderType").value;
+      const nombre = formData.get("nombre");
+      const telefono = formData.get("telefono");
+      const tipo_pedido = formData.get("tipo_pedido");
+      const direccion = formData.get("direccion");
+      const hora = formData.get("hora");
+      
+      // Validaciones básicas
+      if (!nombre || !telefono || !tipo_pedido) {
+        alert("Por favor completa todos los campos obligatorios.");
+        return;
+      }
+      
+      if (tipo_pedido === "delivery" && !direccion) {
+        alert("Por favor ingresa la dirección para delivery.");
+        return;
+      }
+      
+      if ((tipo_pedido === "recojo" || tipo_pedido === "reserva") && !hora) {
+        alert("Por favor selecciona una hora.");
+        return;
+      }
       
       // Construir mensaje de WhatsApp
       let message = `*NUEVO PEDIDO - LA MASSA PIZZERÍA*\n\n`;
-      message += `*Cliente:* ${formData.get("nombre") || "No especificado"}\n`;
-      message += `*Tipo:* ${orderType === "delivery" ? "Delivery" : orderType === "recojo" ? "Recojo" : "Reserva"}\n`;
+      message += `*Cliente:* ${nombre}\n`;
+      message += `*Teléfono:* ${telefono}\n`;
+      message += `*Tipo:* ${tipo_pedido === "delivery" ? "Delivery" : tipo_pedido === "recojo" ? "Recojo en tienda" : "Reserva de mesa"}\n`;
       
-      if (orderType === "delivery") {
-        message += `*Dirección:* ${formData.get("direccion") || "No especificada"}\n`;
+      if (tipo_pedido === "delivery") {
+        message += `*Dirección:* ${direccion}\n`;
       } else {
-        message += `*Hora:* ${formData.get("hora") || "No especificada"}\n`;
+        message += `*Hora:* ${hora}\n`;
       }
       
       message += `\n*DETALLE DEL PEDIDO:*\n`;
+      let totalPedido = 0;
+      
       Object.values(cart).forEach(item => {
-        message += `• ${item.name} x${item.qty} = ${money(item.price * item.qty)}\n`;
+        const subtotal = item.price * item.qty;
+        totalPedido += subtotal;
+        message += `• ${item.name} x${item.qty} = ${money(subtotal)}\n`;
       });
       
-      message += `\n*TOTAL:* ${money(cartTotal())}\n`;
-      message += `\n*Nota:* Pedido generado desde la web\n`;
+      message += `\n*TOTAL A PAGAR:* ${money(totalPedido)}\n`;
+      message += `\n*FECHA:* ${new Date().toLocaleDateString('es-PE')}\n`;
+      message += `*HORA DEL PEDIDO:* ${new Date().toLocaleTimeString('es-PE', {hour: '2-digit', minute:'2-digit'})}\n`;
+      message += `\n_*Nota:* Pedido generado desde la web_\n`;
       
       // Codificar mensaje para URL
       const encodedMessage = encodeURIComponent(message);
       const whatsappURL = `https://wa.me/51926620848?text=${encodedMessage}`;
       
-      // Limpiar carrito
-      cart = {};
-      saveCart();
-      renderCartBadge();
-      
-      // Cerrar modal y abrir WhatsApp
-      $("#checkoutModal").remove();
-      window.open(whatsappURL, "_blank");
-      
-      // Mostrar confirmación
-      alert("¡Pedido enviado! Se abrirá WhatsApp para confirmación.");
+      // Confirmar antes de enviar
+      if (confirm("¿Deseas enviar el pedido por WhatsApp?\n\nSe abrirá WhatsApp con los detalles de tu pedido.")) {
+        // Limpiar carrito
+        cart = {};
+        saveCart();
+        renderCartBadge();
+        
+        // Cerrar modal y abrir WhatsApp
+        $("#checkoutModal").remove();
+        window.open(whatsappURL, "_blank");
+
+        // Mostrar confirmación
+        alert("¡Pedido enviado! Se abrirá WhatsApp para confirmación.");
+      }
     });
   }
 
